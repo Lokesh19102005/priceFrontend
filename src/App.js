@@ -34,7 +34,7 @@ function App() {
   // ✅ Function to fetch tracked product list
   const fetchProductList = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/products");
+      const response = await axios.get("https://pricebackend.onrender.com/products");
       setProductList(response.data);
     } catch (error) {
       console.error("Error fetching product list:", error);
@@ -57,7 +57,7 @@ function App() {
     setPriceHistory([]);
 
     try {
-      const response = await axios.post("http://localhost:5000/scrape", {
+      const response = await axios.post("https://pricebackend.onrender.com/scrape", {
         url,
       });
       setCurrentPrice(response.data.currentPrice);
@@ -75,7 +75,7 @@ function App() {
 
   const fetchPriceHistoryByASIN = async (asin) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/history/${asin}`);
+      const response = await fetch(`https://pricebackend.onrender.com/api/history/${asin}`);
       const data = await response.json();
       setPriceHistory(data.priceHistory || []);
       setCurrentPrice(data.currentPrice || null);
